@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) IBInspectable UIColor *placeholderColor;
 @property (nonatomic, assign) IBInspectable CGFloat placeholderScale;
+@property (nonatomic, assign) IBInspectable BOOL uppercase;
 
 @end
