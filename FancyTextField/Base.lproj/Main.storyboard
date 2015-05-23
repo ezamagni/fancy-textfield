@@ -24,9 +24,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Placeholder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mf0-hE-52Y" customClass="Fancy1TextField">
-                                <rect key="frame" x="173" y="174.5" width="411" height="46"/>
+                                <rect key="frame" x="173" y="175.5" width="411" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="uWa-lb-2To"/>
+                                    <constraint firstAttribute="height" constant="45" id="uWa-lb-2To"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -47,23 +47,45 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Placeholder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAc-cF-4vX">
-                                <rect key="frame" x="173" y="102.5" width="411" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="eLb-jH-hpO"/>
-                                </constraints>
+                                <rect key="frame" x="173.5" y="108" width="410.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Placeholder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUY-Cp-hsy" customClass="Fancy2TextField">
+                                <rect key="frame" x="172" y="257" width="412" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderScale">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="uppercase" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fancy TextField 2:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yn5-E1-98X">
+                                <rect key="frame" x="24" y="262" width="138.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vAc-cF-4vX" firstAttribute="leading" secondItem="Mf0-hE-52Y" secondAttribute="leading" id="0OZ-zo-4CD"/>
                             <constraint firstItem="d1C-0h-pja" firstAttribute="centerY" secondItem="vAc-cF-4vX" secondAttribute="centerY" id="2s8-LK-87x"/>
                             <constraint firstItem="d1C-0h-pja" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="3tk-PA-jdO"/>
+                            <constraint firstItem="FUY-Cp-hsy" firstAttribute="leading" secondItem="yn5-E1-98X" secondAttribute="trailing" constant="10" id="6HB-86-aJt"/>
+                            <constraint firstItem="yn5-E1-98X" firstAttribute="top" secondItem="7cc-IC-tgU" secondAttribute="bottom" constant="54" id="C5Q-xk-tdI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vAc-cF-4vX" secondAttribute="trailing" id="Eop-h0-wH0"/>
                             <constraint firstItem="vAc-cF-4vX" firstAttribute="leading" secondItem="d1C-0h-pja" secondAttribute="trailing" constant="16" id="GEC-Ky-X3q"/>
                             <constraint firstItem="d1C-0h-pja" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="92" id="OmM-l0-9Qx"/>
+                            <constraint firstItem="yn5-E1-98X" firstAttribute="centerY" secondItem="FUY-Cp-hsy" secondAttribute="centerY" constant="0.5" id="Q2W-cp-0gp"/>
                             <constraint firstItem="7cc-IC-tgU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="TUK-6n-jMn"/>
+                            <constraint firstItem="yn5-E1-98X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="Z7X-Z5-PCc"/>
+                            <constraint firstItem="FUY-Cp-hsy" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ZJY-bI-Xvz"/>
                             <constraint firstItem="Mf0-hE-52Y" firstAttribute="centerY" secondItem="7cc-IC-tgU" secondAttribute="centerY" id="dnw-Eg-HPP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mf0-hE-52Y" secondAttribute="trailing" id="izR-9q-V7O"/>
                             <constraint firstItem="7cc-IC-tgU" firstAttribute="top" secondItem="d1C-0h-pja" secondAttribute="bottom" constant="55" id="kSc-Hm-d1b"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D901D2741B0FDDE100A17CA9 /* Fancy1TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D901D2731B0FDDE100A17CA9 /* Fancy1TextField.m */; };
+		D92A31751B109583006B06D2 /* Fancy2TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A31741B109583006B06D2 /* Fancy2TextField.m */; };
 		D93290A31B0F961D00C827B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D93290A21B0F961D00C827B9 /* main.m */; };
 		D93290A61B0F961D00C827B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D93290A51B0F961D00C827B9 /* AppDelegate.m */; };
 		D93290A91B0F961D00C827B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93290A81B0F961D00C827B9 /* ViewController.m */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		D901D2721B0FDDE100A17CA9 /* Fancy1TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fancy1TextField.h; sourceTree = "<group>"; };
 		D901D2731B0FDDE100A17CA9 /* Fancy1TextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fancy1TextField.m; sourceTree = "<group>"; };
+		D92A31731B109583006B06D2 /* Fancy2TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fancy2TextField.h; sourceTree = "<group>"; };
+		D92A31741B109583006B06D2 /* Fancy2TextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fancy2TextField.m; sourceTree = "<group>"; };
 		D932909D1B0F961D00C827B9 /* FancyTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93290A11B0F961D00C827B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93290A21B0F961D00C827B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,6 +69,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D92A31761B10958D006B06D2 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				D93290C61B0F964E00C827B9 /* FancyTextField.h */,
+				D93290C71B0F964E00C827B9 /* FancyTextField.m */,
+				D901D2721B0FDDE100A17CA9 /* Fancy1TextField.h */,
+				D901D2731B0FDDE100A17CA9 /* Fancy1TextField.m */,
+				D92A31731B109583006B06D2 /* Fancy2TextField.h */,
+				D92A31741B109583006B06D2 /* Fancy2TextField.m */,
+			);
+			name = TextFields;
+			sourceTree = "<group>";
+		};
 		D93290941B0F961D00C827B9 = {
 			isa = PBXGroup;
 			children = (
@@ -87,8 +103,7 @@
 		D932909F1B0F961D00C827B9 /* FancyTextField */ = {
 			isa = PBXGroup;
 			children = (
-				D93290C61B0F964E00C827B9 /* FancyTextField.h */,
-				D93290C71B0F964E00C827B9 /* FancyTextField.m */,
+				D92A31761B10958D006B06D2 /* TextFields */,
 				D93290A41B0F961D00C827B9 /* AppDelegate.h */,
 				D93290A51B0F961D00C827B9 /* AppDelegate.m */,
 				D93290A71B0F961D00C827B9 /* ViewController.h */,
@@ -97,8 +112,6 @@
 				D93290AD1B0F961E00C827B9 /* Images.xcassets */,
 				D93290AF1B0F961E00C827B9 /* LaunchScreen.xib */,
 				D93290A01B0F961D00C827B9 /* Supporting Files */,
-				D901D2721B0FDDE100A17CA9 /* Fancy1TextField.h */,
-				D901D2731B0FDDE100A17CA9 /* Fancy1TextField.m */,
 			);
 			path = FancyTextField;
 			sourceTree = "<group>";
@@ -231,6 +244,7 @@
 			files = (
 				D93290A91B0F961D00C827B9 /* ViewController.m in Sources */,
 				D93290A61B0F961D00C827B9 /* AppDelegate.m in Sources */,
+				D92A31751B109583006B06D2 /* Fancy2TextField.m in Sources */,
 				D901D2741B0FDDE100A17CA9 /* Fancy1TextField.m in Sources */,
 				D93290A31B0F961D00C827B9 /* main.m in Sources */,
 				D93290C81B0F964E00C827B9 /* FancyTextField.m in Sources */,
