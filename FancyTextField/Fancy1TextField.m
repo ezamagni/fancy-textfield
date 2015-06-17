@@ -8,15 +8,22 @@
 
 #import "Fancy1TextField.h"
 
+static const CGFloat PH_TOP_INSET = 4;
+
+typedef NS_ENUM(NSUInteger, PlaceholderAnimationState) {
+    PlaceholderAnimationStateNone,
+    PlaceholderAnimationStateRising,
+    PlaceholderAnimationStateFalling
+};
+
+
 @interface Fancy1TextField ()
 
 @property (nonatomic, strong) UILabel *phLabel;
 @property (nonatomic, assign) CGRect startRect;
-@property (nonatomic, assign) BOOL animating;
+@property (nonatomic, assign) PlaceholderAnimationState animationState;
 
 @end
-
-static const CGFloat PH_TOP_INSET = 4;
 
 @implementation Fancy1TextField
 
@@ -25,7 +32,6 @@ static const CGFloat PH_TOP_INSET = 4;
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self initState];
-
     }
     return self;
 }
@@ -43,7 +49,7 @@ static const CGFloat PH_TOP_INSET = 4;
     _placeholderColor = [UIColor blackColor];
     _placeholderScale = 0.6;
     _startRect = CGRectZero;
-    _animating = NO;
+    _animationState = PlaceholderAnimationStateNone;
 
     [self addTarget:self action:@selector(textDidChange) forControlEvents:UIControlEventEditingChanged];
 }
@@ -56,8 +62,17 @@ static const CGFloat PH_TOP_INSET = 4;
     if (!self.phLabel) {
         if ([subview isKindOfClass:[UILabel class]]) {
             UILabel *labelView = (UILabel*)subview;
-            if ([labelView.text isEqualToString:self.placeholder] && !labelView.userInteractionEnabled) {
+            if (([labelView.text isEqualToString:self.placeholder] && !labelView.userInteractionEnabled)
+                || [labelView.text isEqualToString:self.text]) {
                 _phLabel = [self setupLabelFrom:labelView];
+                if (self.text.length > 0) {
+                    [self addSubview:_phLabel];
+                    [self bringSubviewToFront:_phLabel];
+                    CGRect phFrame = _phLabel.frame;
+                    _phLabel.alpha = 1.0;
+                    _phLabel.frame = CGRectMake(phFrame.origin.x, PH_TOP_INSET,
+                                                phFrame.size.width, phFrame.size.height);
+                }
             }
         }
     }
@@ -91,46 +106,55 @@ static const CGFloat PH_TOP_INSET = 4;
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    CGRect superRect = [super editingRectForBounds:bounds];
-    return CGRectMake(superRect.origin.x, superRect.origin.y + _startRect.size.height / 2 + PH_TOP_INSET,
-                      superRect.size.width, superRect.size.height - _startRect.size.height / 2);
+    return [self textRectForBounds:bounds];
 }
 
 - (void) textDidChange {
-    if (!_phLabel || _animating)
+    if (!_phLabel)
         return;
 
-    if (!_phLabel.superview && self.text.length > 0) {
+    if (self.text.length > 0 && _animationState != PlaceholderAnimationStateRising) {
         // start rising
         [self addSubview:_phLabel];
         [self bringSubviewToFront:_phLabel];
         CGRect phFrame = _phLabel.frame;
-        _animating = YES;
+        _animationState = PlaceholderAnimationStateRising;
 
-        [UIView animateWithDuration:0.42 animations:^{
-            _phLabel.alpha = 1.0;
-            _phLabel.frame = CGRectMake(phFrame.origin.x, PH_TOP_INSET,
-                                        phFrame.size.width, phFrame.size.height);
-        } completion:^(BOOL finished) {
-            _animating = NO;
-        }];
+        [UIView animateWithDuration:0.42
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             _phLabel.alpha = 1.0;
+                             _phLabel.frame = CGRectMake(phFrame.origin.x, PH_TOP_INSET,
+                                                         phFrame.size.width, phFrame.size.height);
+                         } completion:^(BOOL finished) {
+                             _animationState = PlaceholderAnimationStateNone;
+                         }];
     }
-    else if (self.text.length == 0) {
+    else if (self.text.length == 0 && _animationState != PlaceholderAnimationStateFalling) {
         // start falling
-        _animating = YES;
+        _animationState = PlaceholderAnimationStateFalling;
 
-        [UIView animateWithDuration:0.33 animations:^{
-            _phLabel.alpha = 0.0;
-            _phLabel.frame = _startRect;
-        } completion:^(BOOL finished) {
-            _animating = NO;
-            [_phLabel removeFromSuperview];
-            _phLabel = nil;
-        }];
+        [UIView animateWithDuration:0.33
+                              delay:0.1
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             _phLabel.alpha = 0.0;
+                             _phLabel.frame = _startRect;
+                         }completion:^(BOOL finished) {
+                             _animationState = PlaceholderAnimationStateNone;
+                             [_phLabel removeFromSuperview];
+                             _phLabel = nil;
+                         }];
     }
 }
 
 #pragma mark - Getters & Setters
+
+- (void)setText:(NSString *)text {
+    [super setText:text];
+    [self textDidChange];
+}
 
 -(void)setPlaceholderScale:(CGFloat)placeholderScale {
     if (placeholderScale < 0.0)
